@@ -12,10 +12,10 @@ class DepartamentoController extends Controller
     public function index()
     {
         $departamentos = DB::table('tb_departamento')
-            ->join('tb_departamento', 'tb_pais.pais_codi', '=', 'tb_departamento.pais_codi')
-            ->select('tb_pais.*',"tb_departamento.pais_nomb")
+            ->join('tb_pais', 'tb_departamento.pais_codi', '=', 'tb_pais.pais_codi')
+            ->select('tb_departamento.*', 'tb_pais.pais_nomb')
             ->get();
-        return view('deaprtamento.index',['departamentos' => $departamentos]);
+        return view('departamento.index', ['departamentos' => $departamentos]);
     }
 
     /**
